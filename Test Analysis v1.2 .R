@@ -1,6 +1,7 @@
 #Contingency Analysis by Test v1
 ################################################################################################
 #load the necessary library
+install.packages("gt")
 
 library(tidyverse)#delivers plenty of functions 
 library(magrittr)
@@ -8,14 +9,11 @@ library(ggplot2) #Used in plotting
 library(cowplot) #used to set multiple plots into one page
 library(svDialogs) #to create pop up window
 library("gridExtra") #to save tables into pdf format
-
-#install.packages("gt")
-#install.packages("webshot")
 library(gt) #to create nice dataframes saving can be made but on HTML format
 ####################################################################################
 
 #Min ST
-
+dlg_message("Select the Min(ST) Contingency Table", type="ok")
 SetWD_Input<-setwd("C:/Users/Niz/Desktop/STAGE TOX LS/Test Analysis/")
 #Calling the Datas
 Min_ST_test<-read.table(file.choose(new=TRUE),header = TRUE,sep = ",",dec = ".")
@@ -71,7 +69,7 @@ Min_ST_False_Neg_Rate
 ###################################################################################
 #Positive Predictive Value
 #PPV<- TP/(TP+FP) or
-#VPP=Sensibilité x Prévalence / [(Sensibilité x Prévalence + (1-Spécificité)(1- Prévalence)]
+#VPP=SensibilitÃ© x PrÃ©valence / [(SensibilitÃ© x PrÃ©valence + (1-SpÃ©cificitÃ©)(1- PrÃ©valence)]
 #as the prevalence is independant of the test quality, it would be better to use the second one
 
 Min_ST_Poz_Predictive_Value<-(Min_ST_Sensibility*Min_ST_Prevalence)/(Min_ST_Sensibility*Min_ST_Prevalence+(1-Min_ST_Specificity)*(1-Min_ST_Prevalence))
@@ -80,7 +78,7 @@ Min_ST_Poz_Predictive_Value
 ####################################################################################
 #Negative Predictive Value
 #NPV<- TN/(TN+FN) or 
-#PP= Spécificité(1- Prévalence) / [Spécificité(1- Prévalence) + (1- Sensibilité)Prévalence]
+#PP= SpÃ©cificitÃ©(1- PrÃ©valence) / [SpÃ©cificitÃ©(1- PrÃ©valence) + (1- SensibilitÃ©)PrÃ©valence]
 #as the prevalence is independant of the test quality, it would be better to use the second one
 
 Min_ST_Neg_Predictive_Value<-(Min_ST_Specificity*(1-Min_ST_Prevalence))/(Min_ST_Specificity*(1-Min_ST_Prevalence)+(1-Min_ST_Sensibility)*Min_ST_Prevalence)
@@ -88,7 +86,7 @@ Min_ST_Neg_Predictive_Value
 
 ###########################################################################################
 #Positive Likekihood Ratio
-#PLR = Sensibility/(1-Spécificity)
+#PLR = Sensibility/(1-SpÃ©cificity)
 
 Min_ST_Poz_Likelihood_Ratio<- Min_ST_Sensibility/(1-Min_ST_Specificity)
 Min_ST_Poz_Likelihood_Ratio
@@ -145,8 +143,8 @@ Min_ST_test_Values<-c(Min_ST_Prevalence,
 ################################################################################################
 #RR ST
 
-#Min ST
 
+dlg_message("Select the RR(ST) Contingency Table", type="ok")
 SetWD_Input<-setwd("C:/Users/Niz/Desktop/STAGE TOX LS/Test Analysis/")
 #Calling the Datas
 RR_ST_test<-read.table(file.choose(new=TRUE),header = TRUE,sep = ",",dec = ".")
@@ -202,7 +200,7 @@ RR_ST_False_Neg_Rate
 ###################################################################################
 #Positive Predictive Value
 #PPV<- TP/(TP+FP) or
-#VPP=Sensibilité x Prévalence / [(Sensibilité x Prévalence + (1-Spécificité)(1- Prévalence)]
+#VPP=SensibilitÃ© x PrÃ©valence / [(SensibilitÃ© x PrÃ©valence + (1-SpÃ©cificitÃ©)(1- PrÃ©valence)]
 #as the prevalence is independant of the test quality, it would be better to use the second one
 
 RR_ST_Poz_Predictive_Value<-(RR_ST_Sensibility*RR_ST_Prevalence)/(RR_ST_Sensibility*RR_ST_Prevalence+(1-RR_ST_Specificity)*(1-RR_ST_Prevalence))
@@ -211,7 +209,7 @@ RR_ST_Poz_Predictive_Value
 ####################################################################################
 #Negative Predictive Value
 #NPV<- TN/(TN+FN) or 
-#PP= Spécificité(1- Prévalence) / [Spécificité(1- Prévalence) + (1- Sensibilité)Prévalence]
+#PP= SpÃ©cificitÃ©(1- PrÃ©valence) / [SpÃ©cificitÃ©(1- PrÃ©valence) + (1- SensibilitÃ©)PrÃ©valence]
 #as the prevalence is independant of the test quality, it would be better to use the second one
 
 RR_ST_Neg_Predictive_Value<-(RR_ST_Specificity*(1-RR_ST_Prevalence))/(RR_ST_Specificity*(1-RR_ST_Prevalence)+(1-RR_ST_Sensibility)*RR_ST_Prevalence)
@@ -219,7 +217,7 @@ RR_ST_Neg_Predictive_Value
 
 ###########################################################################################
 #Positive Likekihood Ratio
-#PLR = Sensibility/(1-Spécificity)
+#PLR = Sensibility/(1-SpÃ©cificity)
 
 RR_ST_Poz_Likelihood_Ratio<- RR_ST_Sensibility/(1-RR_ST_Specificity)
 RR_ST_Poz_Likelihood_Ratio
@@ -277,7 +275,7 @@ RR_ST_test_Values<-c(RR_ST_Prevalence,
 ############################################################################################
 ############################################################################################
 #SI of LS
-
+dlg_message("Select the SI Contingency Table", type="ok")
 SetWD_Input<-setwd("C:/Users/Niz/Desktop/STAGE TOX LS/Test Analysis/")
 #Calling the Datas
 SI_test<-read.table(file.choose(new=TRUE),header = TRUE,sep = ",",dec = ".")
@@ -333,7 +331,7 @@ SI_False_Neg_Rate
 ###################################################################################
 #Positive Predictive Value
 #PPV<- TP/(TP+FP) or
-#VPP=Sensibilité x Prévalence / [(Sensibilité x Prévalence + (1-Spécificité)(1- Prévalence)]
+#VPP=SensibilitÃ© x PrÃ©valence / [(SensibilitÃ© x PrÃ©valence + (1-SpÃ©cificitÃ©)(1- PrÃ©valence)]
 #as the prevalence is independant of the test quality, it would be better to use the second one
 
 SI_Poz_Predictive_Value<-(SI_Sensibility*SI_Prevalence)/(SI_Sensibility*SI_Prevalence+(1-SI_Specificity)*(1-SI_Prevalence))
@@ -342,7 +340,7 @@ SI_Poz_Predictive_Value
 ####################################################################################
 #Negative Predictive Value
 #NPV<- TN/(TN+FN) or 
-#PP= Spécificité(1- Prévalence) / [Spécificité(1- Prévalence) + (1- Sensibilité)Prévalence]
+#PP= SpÃ©cificitÃ©(1- PrÃ©valence) / [SpÃ©cificitÃ©(1- PrÃ©valence) + (1- SensibilitÃ©)PrÃ©valence]
 #as the prevalence is independant of the test quality, it would be better to use the second one
 
 SI_Neg_Predictive_Value<-(SI_Specificity*(1-SI_Prevalence))/(SI_Specificity*(1-SI_Prevalence)+(1-SI_Sensibility)*SI_Prevalence)
@@ -350,7 +348,7 @@ SI_Neg_Predictive_Value
 
 ###########################################################################################
 #Positive Likekihood Ratio
-#PLR = Sensibility/(1-Spécificity)
+#PLR = Sensibility/(1-SpÃ©cificity)
 
 SI_Poz_Likelihood_Ratio<- SI_Sensibility/(1-SI_Specificity)
 SI_Poz_Likelihood_Ratio
@@ -409,7 +407,7 @@ SI_test_Values<-c(SI_Prevalence,
 ################################################################################################
 
 #Complilance
-
+dlg_message("Select the Compliance Contingency Table", type="ok")
 SetWD_Input<-setwd("C:/Users/Niz/Desktop/STAGE TOX LS/Test Analysis/")
 #Calling the Datas
 Compliance_test<-read.table(file.choose(new=TRUE),header = TRUE,sep = ",",dec = ".")
@@ -465,7 +463,7 @@ Compliance_False_Neg_Rate
 ###################################################################################
 #Positive Predictive Value
 #PPV<- TP/(TP+FP) or
-#VPP=Sensibilité x Prévalence / [(Sensibilité x Prévalence + (1-Spécificité)(1- Prévalence)]
+#VPP=SensibilitÃ© x PrÃ©valence / [(SensibilitÃ© x PrÃ©valence + (1-SpÃ©cificitÃ©)(1- PrÃ©valence)]
 #as the prevalence is independant of the test quality, it would be better to use the second one
 
 Compliance_Poz_Predictive_Value<-(Compliance_Sensibility*Compliance_Prevalence)/(Compliance_Sensibility*Compliance_Prevalence+(1-Compliance_Specificity)*(1-Compliance_Prevalence))
@@ -474,7 +472,7 @@ Compliance_Poz_Predictive_Value
 ####################################################################################
 #Negative Predictive Value
 #NPV<- TN/(TN+FN) or 
-#PP= Spécificité(1- Prévalence) / [Spécificité(1- Prévalence) + (1- Sensibilité)Prévalence]
+#PP= SpÃ©cificitÃ©(1- PrÃ©valence) / [SpÃ©cificitÃ©(1- PrÃ©valence) + (1- SensibilitÃ©)PrÃ©valence]
 #as the prevalence is independant of the test quality, it would be better to use the second one
 
 Compliance_Neg_Predictive_Value<-(Compliance_Specificity*(1-Compliance_Prevalence))/(Compliance_Specificity*(1-Compliance_Prevalence)+(1-Compliance_Sensibility)*Compliance_Prevalence)
@@ -482,7 +480,7 @@ Compliance_Neg_Predictive_Value
 
 ###########################################################################################
 #Positive Likekihood Ratio
-#PLR = Sensibility/(1-Spécificity)
+#PLR = Sensibility/(1-SpÃ©cificity)
 
 Compliance_Poz_Likelihood_Ratio<- Compliance_Sensibility/(1-Compliance_Specificity)
 Compliance_Poz_Likelihood_Ratio
@@ -540,7 +538,7 @@ Compliance_test_Values<-c(Compliance_Prevalence,
 ###############################################################################################
 ###############################################################################################
 #HLA
-
+dlg_message("Select the Hysteresis Loop Area (HLA) Contingency Table", type="ok")
 SetWD_Input<-setwd("C:/Users/Niz/Desktop/STAGE TOX LS/Test Analysis/")
 #Calling the Datas
 HLA_test<-read.table(file.choose(new=TRUE),header = TRUE,sep = ",",dec = ".")
@@ -596,7 +594,7 @@ HLA_False_Neg_Rate
 ###################################################################################
 #Positive Predictive Value
 #PPV<- TP/(TP+FP) or
-#VPP=Sensibilité x Prévalence / [(Sensibilité x Prévalence + (1-Spécificité)(1- Prévalence)]
+#VPP=SensibilitÃ© x PrÃ©valence / [(SensibilitÃ© x PrÃ©valence + (1-SpÃ©cificitÃ©)(1- PrÃ©valence)]
 #as the prevalence is independant of the test quality, it would be better to use the second one
 
 HLA_Poz_Predictive_Value<-(HLA_Sensibility*HLA_Prevalence)/(HLA_Sensibility*HLA_Prevalence+(1-HLA_Specificity)*(1-HLA_Prevalence))
@@ -605,7 +603,7 @@ HLA_Poz_Predictive_Value
 ####################################################################################
 #Negative Predictive Value
 #NPV<- TN/(TN+FN) or 
-#PP= Spécificité(1- Prévalence) / [Spécificité(1- Prévalence) + (1- Sensibilité)Prévalence]
+#PP= SpÃ©cificitÃ©(1- PrÃ©valence) / [SpÃ©cificitÃ©(1- PrÃ©valence) + (1- SensibilitÃ©)PrÃ©valence]
 #as the prevalence is independant of the test quality, it would be better to use the second one
 
 HLA_Neg_Predictive_Value<-(HLA_Specificity*(1-HLA_Prevalence))/(HLA_Specificity*(1-HLA_Prevalence)+(1-HLA_Sensibility)*HLA_Prevalence)
@@ -613,7 +611,7 @@ HLA_Neg_Predictive_Value
 
 ###########################################################################################
 #Positive Likekihood Ratio
-#PLR = Sensibility/(1-Spécificity)
+#PLR = Sensibility/(1-SpÃ©cificity)
 
 HLA_Poz_Likelihood_Ratio<- HLA_Sensibility/(1-HLA_Specificity)
 HLA_Poz_Likelihood_Ratio
@@ -736,11 +734,8 @@ ifelse(Compliance_NaN_In_Poz_Proba>0,First_Note_position[4]<-4,First_Note_positi
 ifelse(HLA_NaN_In_Poz_Proba>0,First_Note_position[5]<-5,First_Note_position[5]<-NA)
 First_Note_position
 #############################################################################
-#Ok let's make that a beautiful table
-### Try and make a nice table to export
+#Ok let's make that a beautiful table to export, it would save a .HTML file
 
-
-#All_Results_Df that's the df i'm trying to make beautiful
 All_Results_Final<-All_Results_Df_Percentage %>%
   gt(rowname_col = "Performace Indexes") %>%
   tab_header(title = "Test Performance Analysis",
@@ -754,4 +749,3 @@ All_Results_Final<-All_Results_Df_Percentage %>%
 
 All_Results_Final
 gtsave(All_Results_Final,"Tests Performance Analysis.html")
-
