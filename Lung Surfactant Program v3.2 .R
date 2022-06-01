@@ -367,7 +367,7 @@ for (i in seq(length(LS_Df_Splitted_by_Cycle)))
 
 #The program will split each cycle into Inspiration values and expiration values
 # on cherche l'expiration, compris entre le max et le min
-#puis on considère que toutes les autres valeurs font partie de l'expiration
+#puis on considÃ¨re que toutes les autres valeurs font partie de l'expiration
 #utiliser la fonction sort, pour que l'expiration augmente
 #attention il faut les memes valeurs/index que SA, donc la fonction sort maybe sur la toute fin
 
@@ -410,11 +410,11 @@ for (i in seq(length(LS_Df_Splitted_by_Cycle)))
 
 AUC_Exp<-vector("list",(length(LS_Df_Splitted_by_Cycle)-1))
 for (i in seq(length(LS_Df_Splitted_by_Cycle))) 
-{AUC_Exp[[i]]<-abs(((SA_Exp[[i]]+SA_Exp[[i+1]])*(ST_Exp[[i+1]]-ST_Exp[[(i)]])/2))}
+{AUC_Exp[[i]]<-abs(((SA_Exp[[i]]-SA_Exp[[i+1]])*(ST_Exp[[i+1]]+ST_Exp[[(i)]])/2))}
 
 AUC_Insp<-vector("list",(length(LS_Df_Splitted_by_Cycle)-1))
 for (i in seq(length(LS_Df_Splitted_by_Cycle))) 
-  {AUC_Insp[[i]]<-abs(((SA_Insp[[i]]+SA_Insp[[i+1]])*(ST_Insp[[i+1]]-ST_Insp[[i]]))/2)}
+  {AUC_Insp[[i]]<-abs(((SA_Insp[[i]]-SA_Insp[[i+1]])*(ST_Insp[[i+1]]+ST_Insp[[i]]))/2)}
 
 #Then it will sum all the elements of each vector, as it forms the whole area under the curve from the first value to the last
 Sum_AUC_Exp<-c()
